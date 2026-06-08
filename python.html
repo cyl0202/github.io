@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python基础 | 在线练习</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primary: '#165DFF', dark: '#0F172A', light: '#F8FAFC', card: '#1E293B' } } } }
+    </script>
+</head>
+<body class="bg-dark text-light min-h-screen">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <a href="index.html" class="text-primary mb-4 inline-block"><i class="fa-solid fa-arrow-left"></i> 返回主页</a>
+        <h1 class="text-2xl font-bold mb-4">Python基础 练习题</h1>
+        
+        <div class="bg-card p-5 rounded-xl mb-6">
+            <h3 class="font-bold mb-2">1. 输出 Hello World</h3>
+            <textarea class="w-full h-20 bg-dark border border-gray-700 p-3 rounded" placeholder="输入代码"></textarea>
+            <button class="run mt-2 px-4 py-2 bg-primary rounded text-white">运行</button>
+            <div class="out mt-3 p-3 bg-dark rounded text-green-400"></div>
+        </div>
+
+        <div class="bg-card p-5 rounded-xl mb-6">
+            <h3 class="font-bold mb-2">2. 计算 1+2+3+4+5</h3>
+            <textarea class="w-full h-20 bg-dark border border-gray-700 p-3 rounded"></textarea>
+            <button class="run mt-2 px-4 py-2 bg-primary rounded text-white">运行</button>
+            <div class="out mt-3 p-3 bg-dark rounded text-green-400"></div>
+        </div>
+
+        <div class="bg-card p-5 rounded-xl">
+            <h3 class="font-bold mb-2">选择题：以下哪个是Python注释？</h3>
+            <div class="space-y-2 my-3">
+                <label class="block p-2 border border-gray-700 rounded"><input type="radio" name="q1"> // 注释</label>
+                <label class="block p-2 border border-gray-700 rounded"><input type="radio" name="q1"> # 注释</label>
+                <label class="block p-2 border border-gray-700 rounded"><input type="radio" name="q1"> /* 注释 */</label>
+            </div>
+            <button class="px-4 py-2 bg-primary rounded text-white">提交答案</button>
+        </div>
+    </div>
+
+    <script>
+        let py;
+        loadPyodide().then(res => { py = res; py.loadPackage('numpy'); });
+        document.querySelectorAll('.run').forEach(btn => {
+            btn.onclick = async () => {
+                const t = btn.parentElement.querySelector('textarea');
+                const o = btn.parentElement.querySelector('.out');
+                o.textContent = await py.runPythonAsync(t.value);
+            }
+        });
+    </script>
+</body>
+</html>
