@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据采集与处理 | 练习</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    <script>
+        tailwind.config = {theme:{extend:{colors:{primary:'#165DFF',dark:'#0F172A',light:'#F8FAFC',card:'#1E293B'}}}}
+    </script>
+</head>
+<body class="bg-dark text-light min-h-screen">
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <a href="index.html" class="text-primary mb-4 inline-block"><i class="fa-solid fa-arrow-left"></i> 返回首页</a>
+    <h1 class="text-2xl font-bold mb-4">数据采集与处理 实操练习</h1>
+    <div class="bg-card p-4 rounded-lg mb-6">
+        <p class="text-gray-300">在线Python代码运行，练习文本清洗、缺失值处理</p>
+    </div>
+
+    <!-- 实操题1 -->
+    <div class="bg-card rounded-xl p-5 mb-6">
+        <h3 class="font-bold mb-2">1. 文本清洗：去除多余空格与符号</h3>
+        <textarea class="w-full h-20 bg-dark border border-gray-700 rounded p-3" placeholder="编写清洗代码"></textarea>
+        <button class="run mt-2 px-4 py-2 bg-primary rounded">运行代码</button>
+        <div class="out mt-3 p-3 bg-dark rounded border border-gray-700 text-green-400"></div>
+    </div>
+
+    <!-- 实操题2 -->
+    <div class="bg-card rounded-xl p-5">
+        <h3 class="font-bold mb-2">2. Pandas批量填充表格缺失值</h3>
+        <textarea class="w-full h-20 bg-dark border border-gray-700 rounded p-3"></textarea>
+        <button class="run mt-2 px-4 py-2 bg-primary rounded">运行代码</button>
+        <div class="out mt-3 p-3 bg-dark rounded border border-gray-700 text-green-400"></div>
+    </div>
+</div>
+
+<script>
+let py;
+async function loadPy(){py=await loadPyodide();await py.loadPackage(["pandas","numpy"]);}
+loadPy();
+document.querySelectorAll(".run").forEach(btn=>{
+    btn.onclick=async()=>{
+        const code=btn.previousElementSibling.value;
+        const out=btn.nextElementSibling;
+        if(!py){out.textContent="环境加载中...";return;}
+        try{
+            let res=await py.runPythonAsync(code);
+            out.textContent=res||"执行完成";out.style.color="#4ade80"
+        }catch(e){
+            out.textContent="错误："+e.message;out.style.color="#f87171"
+        }
+    }
+})
+</script>
+</body>
+</html>
