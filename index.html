@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈艺灵 | 个人学习主页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        dark: '#0F172A',
+                        light: '#F8FAFC',
+                        card: '#1E293B'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .card-hover {
+                @apply transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/20;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-5 py-2 rounded-lg font-medium transition-all hover:bg-primary/90 active:scale-95;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark text-light min-h-screen">
+    <!-- 头部信息 -->
+    <header class="py-10 px-4 text-center">
+        <h1 class="text-[clamp(1.8rem,5vw,3rem)] font-bold mb-2">陈艺灵</h1>
+        <p class="text-gray-400 text-lg mb-1">广东科学技术职业学院 | 商学院</p>
+        <p class="text-primary font-medium">商务数据分析与应用专业</p>
+        <div class="w-20 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+    </header>
+
+    <!-- 课程介绍 -->
+    <section class="max-w-4xl mx-auto px-4 mb-8 text-center">
+        <h2 class="text-2xl font-semibold mb-4">我的专业课程学习中心</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">这里汇集了我的核心专业课程，包含在线练习、代码实操、选择题训练，随时随地巩固专业知识</p>
+    </section>
+
+    <!-- 课程卡片 -->
+    <main class="max-w-6xl mx-auto px-4 pb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Python基础 -->
+        <div class="bg-card rounded-2xl p-6 card-hover">
+            <div class="text-primary text-2xl mb-3"><i class="fa-brands fa-python"></i></div>
+            <h3 class="text-xl font-bold mb-2">Python基础</h3>
+            <p class="text-gray-400 mb-4 text-sm">学习Python语法、变量、数据类型、循环、函数等编程基础，培养编程逻辑思维</p>
+            <a href="python.html" class="btn-primary inline-block">开始学习</a>
+        </div>
+
+        <!-- 数据分析技术 -->
+        <div class="bg-card rounded-2xl p-6 card-hover">
+            <div class="text-primary text-2xl mb-3"><i class="fa-solid fa-chart-line"></i></div>
+            <h3 class="text-xl font-bold mb-2">数据分析技术</h3>
+            <p class="text-gray-400 mb-4 text-sm">掌握Pandas、NumPy、Matplotlib数据处理与可视化，完成数据清洗、分析、展示全流程</p>
+            <a href="data-analysis.html" class="btn-primary inline-block">开始学习</a>
+        </div>
+
+        <!-- 数据采集与处理 -->
+        <div class="bg-card rounded-2xl p-6 card-hover">
+            <div class="text-primary text-2xl mb-3"><i class="fa-solid fa-database"></i></div>
+            <h3 class="text-xl font-bold mb-2">数据采集与处理</h3>
+            <p class="text-gray-400 mb-4 text-sm">学习网络数据采集、数据清洗、格式转换、异常值处理，构建高质量数据集</p>
+            <a href="data-collect.html" class="btn-primary inline-block">开始学习</a>
+        </div>
+
+        <!-- 供应链数据分析 -->
+        <div class="bg-card rounded-2xl p-6 card-hover">
+            <div class="text-primary text-2xl mb-3"><i class="fa-solid fa-truck-fast"></i></div>
+            <h3 class="text-xl font-bold mb-2">供应链数据分析</h3>
+            <p class="text-gray-400 mb-4 text-sm">运用数据分析方法优化供应链流程、库存管理、需求预测、物流效率评估</p>
+            <a href="supply-chain.html" class="btn-primary inline-block">开始学习</a>
+        </div>
+
+        <!-- 数据库原理与应用 -->
+        <div class="bg-card rounded-2xl p-6 card-hover">
+            <div class="text-primary text-2xl mb-3"><i class="fa-solid fa-table"></i></div>
+            <h3 class="text-xl font-bold mb-2">数据库原理与应用</h3>
+            <p class="text-gray-400 mb-4 text-sm">学习数据库设计、SQL语言、数据表操作、数据查询与维护</p>
+            <a href="database.html" class="btn-primary inline-block">开始学习</a>
+        </div>
+    </main>
+
+    <!-- 底部 -->
+    <footer class="text-center py-6 text-gray-500 text-sm border-t border-gray-800">
+        <p>© 2025 陈艺灵 | 商务数据分析与应用专业</p>
+    </footer>
+</body>
+</html>
